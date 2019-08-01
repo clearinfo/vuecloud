@@ -20,14 +20,21 @@ export default {
 			var appID="A6018338664263";
 			var myKey="243634D7-F3DC-F027-2AAA-2C2691768DC6";
 			var appKey = SHA1("A6018338664263"+"UZ"+"243634D7-F3DC-F027-2AAA-2C2691768DC6"+"UZ"+now)+"."+now
-			alert(appKey,'appKey')
-			this.axios.get('https://d.apicloud.com/mcm/api/lc_class?filter=%7B%22where%22%3A%7B%7D%2C%22skip%22%3A0%2C%22limit%22%3A20%7D&_=1564675436608',{
+			alert(appKey,'appKey');
+			var params={
+	            fields:{},
+	            where: {
+
+	            },
+	            skip:0,
+	            limit:5
+	        }
+			this.axios.get('https://d.apicloud.com/mcm/api/lc_class?filter=',{
 				headers: {
 				    "X-APICloud-AppId": appID,
 				    "X-APICloud-AppKey": appKey
 				},
-				params:{
-		        }
+				params:encodeURIComponent(params)
 			}).then((response)=>{
                 console.log(response.data)
             }).catch((response)=>{
