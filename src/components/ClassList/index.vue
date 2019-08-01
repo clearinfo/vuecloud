@@ -5,7 +5,7 @@
 </template>
 <script>
 import SHA1 from '@/assets/js/SHA1'
-import Vue from "vue";
+import Vue from "vue"
 Vue.prototype.$SHA1 = SHA1
 export default {
 	name:'ClassList',
@@ -22,19 +22,24 @@ export default {
 			var appKey = SHA1("A6018338664263"+"UZ"+"243634D7-F3DC-F027-2AAA-2C2691768DC6"+"UZ"+now)+"."+now
 			alert(appKey,'appKey');
 			var params={
-	            fields:{},
-	            where: {
+		            fields:{},
+		            where: {
 
-	            },
-	            skip:0,
-	            limit:5
-	        }
-			this.axios.get('https://d.apicloud.com/mcm/api/lc_class?filter=',{
+		            },
+		            skip:0,
+		            limit:5
+		    }
+		    var url='https://d.apicloud.com/mcm/api/lc_class'
+			this.axios.get(url,{
 				headers: {
 				    "X-APICloud-AppId": appID,
-				    "X-APICloud-AppKey": appKey
+				    "X-APICloud-AppKey": appKey,
+				    "Content-Type":'application/x-www-form-urlencoded; charset=UTF-8'
 				},
-				params:encodeURIComponent(params)
+				params:{
+					filter:params
+				}
+
 			}).then((response)=>{
                 console.log(response.data)
             }).catch((response)=>{
