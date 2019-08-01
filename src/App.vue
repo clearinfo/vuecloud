@@ -16,9 +16,11 @@
           </router-link>
         </div>
         <div class="aui-bar-tab-item" tapmode>
+          <router-link to="/classlist">
             <div class="aui-badge">99</div>
             <i class="aui-iconfont aui-icon-cart"></i>
-            <div class="aui-bar-tab-label">购物车</div>
+            <div class="aui-bar-tab-label">课程</div>
+          </router-link>
         </div>
         <div class="aui-bar-tab-item" tapmode>
             <div class="aui-dot"></div>

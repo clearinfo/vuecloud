@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ReadyPlugin from './ready.plugin'
 import router from './router'
-
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(ReadyPlugin)
-
+Vue.use(VueAxios,axios);
 Object.defineProperty(Vue.prototype, 'api', {
   get: function () {
     return window.api
