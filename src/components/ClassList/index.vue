@@ -1,6 +1,10 @@
 <template>
 	<div class="page-ui-list">
 		<h3>{{msg}}</h3>
+		<ul>
+			<li v-for="(item,index) in dataList" :key="index" v-html="item.classname">
+			</li>
+		</ul>
 	</div>
 </template>
 <script>
@@ -11,11 +15,13 @@ export default {
 	name:'ClassList',
 	data(){
 		return {
-			msg:'考试系统课程列表'
+			msg:'考试系统课程列表',
+			dataList:[]
 		}
 	},
 	methods:{
 		getDataList(){
+			var s = this;
 			var now = Date.now();
 			var appID="A6018338664263";
 			var myKey="243634D7-F3DC-F027-2AAA-2C2691768DC6";
@@ -42,6 +48,8 @@ export default {
 
 			}).then((response)=>{
                 console.log(response.data)
+                s.dataList=response.data;
+                
             }).catch((response)=>{
                 console.log(response)
             })
